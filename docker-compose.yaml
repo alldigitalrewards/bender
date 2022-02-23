@@ -1,0 +1,21 @@
+version: '2'
+services:
+  node:
+    stdin_open: true
+    tty: true
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/app
+    expose:
+      - 80
+    ports:
+      - "80:80"
+    environment:
+      ENVIRONMENT: development
+    networks:
+      - codejet
+networks:
+  codejet:
+    driver: "bridge"
