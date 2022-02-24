@@ -41,10 +41,11 @@ app.get('/',(req, res) => {
         'https://asciiart.website/index.php?art=television/futurama\n');
 });
 
-app.get('/person/:personId', (req, res) => {
+app.get('/person/:programId/:personId', (req, res) => {
     const person =     {
         email_address: "jhoughtelin+bender@alldigitalrewards.com",
         unique_id: req.params.personId,
+        program: req.params.programId,
         credit: 999999,
         firstname: "Bender",
         lastname: "Rodriguez",
