@@ -1,7 +1,8 @@
 var express = require('express');
 var app = express();
+const {param, validationResult} = require('express-validator');
 
-app.get('/',(req, res) => {
+app.get('/', (req, res) => {
     res.send('<pre>Bender\n' +
         '\n' +
         '            o\n' +
@@ -42,7 +43,7 @@ app.get('/',(req, res) => {
 });
 
 app.get('/person/:personId', (req, res) => {
-    const person =     {
+    const person = {
         email_address: "jhoughtelin+bender@alldigitalrewards.com",
         unique_id: req.params.personId,
         credit: 999999,
@@ -63,6 +64,18 @@ app.get('/person/:personId', (req, res) => {
     };
 
     res.json(person)
+});
+
+/**
+ * Returning an HTTP status.
+ */
+app.get('/http_status/:status', [param('status').exists().toInt().isNumeric()], (req, res) => {
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+        return res.status(422).json({errors: errors.array()})
+    }
+
+    res.status(req.params.status.toInt()).send();
 });
 
 app.listen(80, () => {
