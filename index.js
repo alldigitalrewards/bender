@@ -70,7 +70,7 @@ app.get('/person/:programId/:personId', (req, res) => {
 /**
  * Returning an HTTP status.
  */
-app.get('/http_status/:status', [param('status').exists().toInt().isNumeric()], (req, res) => {
+app.all('/http_status/:status', [param('status').exists().toInt().isNumeric()], (req, res) => {
     const errors = validationResult(req)
     if (!errors.isEmpty()) {
         return res.status(422).json({errors: errors.array()})
