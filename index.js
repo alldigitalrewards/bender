@@ -76,7 +76,7 @@ app.get('/http_status/:status', [param('status').exists().toInt().isNumeric()], 
         return res.status(422).json({errors: errors.array()})
     }
 
-    res.status(req.params.status.toInt()).send();
+    res.status(req.params.status).send();
 });
 
 app.listen(80, () => {
