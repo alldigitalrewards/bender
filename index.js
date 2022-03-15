@@ -68,6 +68,15 @@ app.get('/person/:programId/:personId', (req, res) => {
 });
 
 /**
+ * Authorize Transactions
+ */
+app.all('/transaction_authorization', (req, res) => {
+    res.json({
+        authorization_id: "A Fishful Of Dollars"
+    });
+});
+
+/**
  * Returning an HTTP status.
  */
 app.all('/http_status/:status', [param('status').exists().toInt().isNumeric()], (req, res) => {
@@ -79,6 +88,6 @@ app.all('/http_status/:status', [param('status').exists().toInt().isNumeric()], 
     res.status(req.params.status).send();
 });
 
-app.listen(80, () => {
+app.listen(81, () => {
     console.log("My Story Is A Lot Like Yours, Only More Interesting ‘Cause It Involves Robots.");
 });
