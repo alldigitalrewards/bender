@@ -1,4 +1,5 @@
 var express = require('express');
+var timers = require('timers');
 var app = express();
 const {param, validationResult} = require('express-validator');
 
@@ -43,7 +44,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/person/:programId/:personId', (req, res) => {
-    const person =     {
+    const person = {
         email_address: "jhoughtelin+bender@alldigitalrewards.com",
         unique_id: req.params.personId,
         program: req.params.programId,
@@ -86,6 +87,26 @@ app.all('/http_status/:status', [param('status').exists().toInt().isNumeric()], 
     }
 
     res.status(req.params.status).send();
+});
+
+app.all('/delayed_response/:time_in_seconds', [param('time_in_seconds').exists().toInt().isNumeric()], (req, res) => {
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+        return res.status(422).json({errors: errors.array()})
+    }
+    /**
+     * Who the fuck does this?
+     * ╭∩╮(Ο_Ο)╭∩╮
+     */
+    let send = res.send;
+    res.send = function () {
+        let args = arguments;
+        timers.setTimeout(function () {
+            send.apply(res, args)
+        }, req.params.time_in_seconds * 1000);
+    }
+
+    res.send();
 });
 
 app.listen(80, () => {
