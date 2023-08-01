@@ -47,20 +47,20 @@ app.get('/person/:programId/:personId', (req, res) => {
         email_address: "jhoughtelin+bender@alldigitalrewards.com",
         unique_id: req.params.personId,
         program: req.params.programId,
-        credit: 999999,
-        firstname: "Bender",
-        lastname: "Rodriguez",
-        language: "en_US",
+        credit: req.query.credit ?? 999999,
+        firstname: req.query.firstname ?? "Bender",
+        lastname: req.query.lastname ?? "Rodriguez",
+        language: req.query.language ?? "en_US",
         address: {
-            firstname: "Bender",
-            lastname: "Rodriguez",
-            address1: "1337 Haxor Drive",  // Incorrect address for testing AVS
-            address2: "",
-            city: "Washington",
-            state: "DC",
-            zip: "20500",
-            country: "840",
-            country_code: "US"
+            firstname: req.query.firstname ?? "Bender",
+            lastname: req.query.lastname ?? "Rodriguez",
+            address1: req.query.address1 ?? "1337 Haxor Drive",  // Incorrect address for testing AVS
+            address2: req.query.address2 ?? "",
+            city: req.query.city ?? "Washington",
+            state: req.query.state ?? "DC",
+            zip: req.query.zip ?? "20500",
+            country: req.query.country ?? "840",
+            country_code: req.query.country_code ?? "US"
         },
     };
 
