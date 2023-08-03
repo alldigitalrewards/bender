@@ -60,8 +60,8 @@ app.get('/person/:programId/:personId', (req, res) => {
             city: req.query.city ?? "Washington",
             state: req.query.state ?? "DC",
             zip: req.query.zip ?? "20500",
-            country: req.query.country ?? "840",
-            country_code: req.query.country_code ?? "US"
+            country: req.query.country ?? "276",
+            country_code: req.query.country_code ?? "DE"
         },
     };
 
