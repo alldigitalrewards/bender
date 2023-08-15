@@ -50,18 +50,18 @@ app.get('/person/:programId/:personId', (req, res) => {
         program: req.params.programId,
         credit: req.query.credit ?? 999999,
         firstname: req.query.firstname ?? "Bender",
-        lastname: req.query.lastname ?? "Rodriguez",
+        lastname: req.query.lastname ?? "R.",
         language: req.query.language ?? "en_US",
         address: {
             firstname: req.query.firstname ?? "Bender",
-            lastname: req.query.lastname ?? "Rodriguez",
+            lastname: req.query.lastname ?? "R.",
             address1: req.query.address1 ?? "1337 Haxor Drive",  // Incorrect address for testing AVS
             address2: req.query.address2 ?? "",
             city: req.query.city ?? "Washington",
             state: req.query.state ?? "DC",
             zip: req.query.zip ?? "20500",
-            country: req.query.country ?? "276",
-            country_code: req.query.country_code ?? "DE"
+            country: req.query.country ?? "840",
+            country_code: req.query.country_code ?? "US"
         },
     };
 
