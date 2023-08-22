@@ -51,12 +51,12 @@ app.get('/person/:programId/:personId', (req, res) => {
         credit: req.query.credit ?? 999999,
         firstname: req.query.firstname ?? "Bender",
         lastname: req.query.lastname ?? "Rodriguez",
-        phone: '563773647',
+        phone: '4074583861',
         language: req.query.language ?? "en_US",
         address: {
             firstname: req.query.firstname ?? "Bender",
             lastname: req.query.lastname ?? "Rodriguez",
-            phone: '472937663',
+            phone: '4074583861',
             address1: req.query.address1 ?? "1337 Haxor Drive",  // Incorrect address for testing AVS
             address2: req.query.address2 ?? "",
             city: req.query.city ?? "Washington",
