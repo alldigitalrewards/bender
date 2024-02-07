@@ -54,7 +54,7 @@ app.get('/person/:programId/:personId', (req, res) => {
         phone: '4074583861',
         language: req.query.language ?? "en_US",
         address: {
-            firstname: req.query.firstname ?? "Bender",
+            firstname: req.query.firstname ?? " Bender",
             lastname: req.query.lastname ?? "Rodriguez",
             phone: '4074583861',
             address1: req.query.address1 ?? "1337 Haxor Drive",  // Incorrect address for testing AVS
