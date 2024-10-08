@@ -74,8 +74,14 @@ app.get('/person/:programId/:personId', (req, res) => {
  * Authorize Transactions
  */
 app.all('/transaction_authorization', (req, res) => {
-    res.json({
-        authorization_id: "A Fishful Of Dollars"
+    // if the query variable "lang" is en_ES, return a 401
+    if (req.query.lang === 'en_ES') {
+        return res.status(401).json({
+            Message: "Español error message."
+        });
+    }
+    res.status(401).json({
+        Message: "English error message."
     });
 });
 
